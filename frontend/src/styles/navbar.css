@@ -1,0 +1,126 @@
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(10, 20, 45, 0.95);
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 8%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+.navbar-brand a {
+    text-decoration: none;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 1px;
+}
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links li {
+    display: flex;
+    align-items: center;
+}
+
+/* Links */
+.navbar-links a {
+    text-decoration: none;
+    color: #e5e7eb;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.navbar-links a:hover {
+    color: #3b82f6;
+}
+
+/* Active NavLink */
+.navbar-links a.active {
+    color: #3b82f6;
+    border-bottom: 2px solid #3b82f6;
+    padding-bottom: 4px;
+}
+
+/* Logout Button */
+.btn-logout {
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: background 0.3s ease,
+        transform 0.2s ease;
+}
+
+.btn-logout:hover {
+    background: #dc2626;
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+    }
+
+    .navbar-brand a {
+        font-size: 1.5rem;
+    }
+
+    .navbar-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .navbar-links a {
+        font-size: 0.95rem;
+    }
+
+    .btn-logout {
+        padding: 8px 14px;
+    }
+}
+
+
+
+
+
+.navbar-brand a {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+}
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.navbar-links a {
+    color: white;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.navbar-links a:hover {
+    color: #7c3aed;
+}

@@ -1,0 +1,101 @@
+.admin-dashboard {
+    min-height: 100vh;
+    background: #f5f7fb;
+    padding: 40px 20px;
+}
+
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.dashboard-header h1 {
+    font-size: 2.5rem;
+    color: #111827;
+    margin-bottom: 10px;
+}
+
+.dashboard-header p {
+    color: #6b7280;
+    font-size: 1.1rem;
+}
+
+.stats-grid {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(
+                220px,
+                1fr
+            )
+        );
+    gap: 20px;
+}
+
+.stat-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow:
+        0 6px 18px
+        rgba(0,0,0,0.08);
+    transition: 0.3s ease;
+}
+
+.stat-card:hover {
+    transform:
+        translateY(-5px);
+}
+
+.stat-card h3 {
+    color: #6b7280;
+    margin-bottom: 10px;
+}
+
+.stat-card h2 {
+    font-size: 2rem;
+    color: #111827;
+}
+
+.admin-links {
+    max-width: 1100px;
+    margin: 50px auto;
+    display: grid;
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(
+                220px,
+                1fr
+            )
+        );
+    gap: 20px;
+}
+
+.admin-btn {
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 18px;
+    border-radius: 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.admin-btn:hover {
+    background: #1d4ed8;
+    transform:
+        translateY(-3px);
+}
+
+.admin-loading {
+    text-align: center;
+    margin-top: 100px;
+    font-size: 1.2rem;
+}

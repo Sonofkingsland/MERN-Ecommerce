@@ -1,0 +1,83 @@
+.admin-orders {
+    min-height: 100vh;
+    background: #f5f7fb;
+    padding: 40px 20px;
+}
+
+.admin-orders h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #111827;
+}
+
+.orders-container {
+    max-width: 1100px;
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.order-card {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+
+    box-shadow:
+        0 5px 18px
+        rgba(0,0,0,0.08);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-info p {
+    margin: 8px 0;
+    color: #374151;
+}
+
+.status-box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.status {
+    background: #dbeafe;
+    color: #2563eb;
+    padding: 8px 16px;
+    border-radius: 999px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.status-box select {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    outline: none;
+}
+
+.loading-text {
+    text-align: center;
+    margin-top: 100px;
+}
+
+@media(max-width:768px) {
+
+    .order-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .status-box {
+        width: 100%;
+    }
+
+    .status-box select {
+        width: 100%;
+    }
+}
