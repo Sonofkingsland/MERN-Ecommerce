@@ -1,6 +1,7 @@
 import Razorpay from "razorpay"
 import crypto from "crypto"
-import { configDotenv } from "dotenv"
+import dotenv from "dotenv";
+dotenv.config();
 
 export const createdOrder = async (req, resp) => {
     try {

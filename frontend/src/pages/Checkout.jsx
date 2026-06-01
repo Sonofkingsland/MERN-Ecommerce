@@ -37,7 +37,7 @@ export const Checkout = () => {
             }
 
             const options = {
-                key: 'rzp_test_dummykey123',   // student dummy fallback
+                key: import.meta.env.VITE_RAZORPAY_KEY_ID,   // student dummy fallback
                 amount: orderData.amount,
                 currency: orderData.currency,
                 name: 'YourShop',
