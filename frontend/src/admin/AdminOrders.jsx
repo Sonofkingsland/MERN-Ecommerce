@@ -37,15 +37,15 @@ export const AdminOrders = () => {
     const handleStatusChange = async (orderId, status) => {
         try {
             const res = await fetch(`http://localhost:4000/api/orders/${orderId}/myStatus`,
-                    {
-                        method: "PUT",
-                        headers: {
-                            "Content-Type": "application/json",
-                            Authorization: `Bearer ${user.token}`
-                        },
-                        body: JSON.stringify({ status })
-                    }
-                );
+                {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${user.token}`
+                    },
+                    body: JSON.stringify({ status })
+                }
+            );
             const data = await res.json();
             if (res.ok) {
                 alert("Order status updated");
@@ -82,8 +82,7 @@ export const AdminOrders = () => {
 
                             <div className="status-box">
                                 <span className="status">{order.status}</span>
-                                <select value={order.status}
-                                    onChange={(e) => handleStatusChange(order._id, e.target.value)}>
+                                <select value={order.status} onChange={(e) => handleStatusChange(order._id, e.target.value)}>
                                     <option value="pending">Pending</option>
                                     <option value="processing">Processing</option>
                                     <option value="shipped">Shipped</option>

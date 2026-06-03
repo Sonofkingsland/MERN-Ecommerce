@@ -4,7 +4,6 @@ import { AuthContext } from "../context/AuthContext";
 import "../styles/addProduct.css";
 
 export const Addproduct = () => {
-
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
@@ -14,10 +13,8 @@ export const Addproduct = () => {
         category: "",
         stock: ""
     });
-
     const [image, setImage] = useState(null);
     const [loading, setLoading] = useState(false);
-
     const handleChange = (e) => { setFormData({ ...formData, [e.target.name]: e.target.value }) };
 
     const handleSubmit = async (e) => {
@@ -25,7 +22,6 @@ export const Addproduct = () => {
         try {
             setLoading(true);
             const data = new FormData();
-
             data.append("name", formData.name);
             data.append("description", formData.description);
             data.append("price", formData.price);
@@ -63,7 +59,7 @@ export const Addproduct = () => {
                 <textarea name="description" placeholder="Description" required value={formData.description} onChange={handleChange} />
                 <input type="number" name="price" placeholder="Price" required value={formData.price} onChange={handleChange} />
                 <input type="text" name="category" placeholder="Category" required value={formData.category} onChange={handleChange} />
-                <input type="number"  name="stock" placeholder="Stock" required value={ formData.stock }onChange={ handleChange}/>
+                <input type="number" name="stock" placeholder="Stock" required value={formData.stock }onChange={ handleChange}/>
                 <input type="file" accept="image/*" required onChange={(e) =>setImage( e.target.files[0])}/>
                 <button type="submit" className="add-btn">{loading ? "Adding..." : "Add Product" }</button>
             </form>

@@ -4,11 +4,8 @@ import {useNavigate,Link} from "react-router-dom";
 import "../styles/adminDashboard.css";
 
 export const AdminDashboard = () => {
-
     const { user } = useContext(AuthContext );
-
     const navigate = useNavigate();
-
     const [stats, setStats] =useState({
             totalUsers: 0,
             totalOrders: 0,
@@ -22,7 +19,6 @@ export const AdminDashboard = () => {
             navigate("/");
             return;
         }
-
         const fetchStats = async() => {
             try {
                 const res =await fetch("http://localhost:4000/api/analytics",{
@@ -40,9 +36,7 @@ export const AdminDashboard = () => {
                 setLoading(false);
             }
         };
-
         fetchStats();
-
     }, [user,navigate ]);
 
     if (loading ) {
@@ -64,17 +58,14 @@ export const AdminDashboard = () => {
                     <h3>Total Users</h3>
                     <h2> { stats.totalUsers} </h2>
                 </div>
-
                 <div className="stat-card">
                     <h3>Total Orders</h3>
                     <h2>{ stats.totalOrders} </h2>
                 </div>
-
                 <div className="stat-card">
                     <h3>Products</h3>
                     <h2> { stats.totalProduct} </h2>
                 </div>
-
                 <div className="stat-card">
                     <h3>Revenue</h3>
                     <h2>${ stats.totalRevenue } </h2>
