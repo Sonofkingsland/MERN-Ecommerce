@@ -10,7 +10,7 @@ export const createdOrder = async (req, resp) => {
             key_secret: process.env.RAZORPAY_KEY_SECRET,
         })
         const options = {
-            amount: req.body.amount * 100,  //amount in the smallest currency unit
+            amount: req.body.amount * 100,  //amount in the smallest currency pesa unit
             currency: "INR",
             receipt: crypto.randomBytes(10).toString("hex"),
         }
