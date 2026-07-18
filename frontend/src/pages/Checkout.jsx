@@ -30,7 +30,7 @@ export const Checkout = () => {
             if (!orderRes.ok) {
                 const fallback = window.confirm("Razorpay keys unconfigured on backed. Use Student bypass mode to place test order?")
                 if (fallback) {
-                    return bypassPayment()
+                    return await bypassPayment()
                 } else {
                     return alert("Payment faild to initalize")
                 }
@@ -50,7 +50,7 @@ export const Checkout = () => {
                         body: JSON.stringify(response)
                     })
                     if (verifyRes.ok) {
-                        const saveOrderRes = await fetch("http://localhost:4000/api/payment/order", {
+                        const saveOrderRes = await fetch("http://localhost:4000/api/orders", {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",
@@ -63,11 +63,13 @@ export const Checkout = () => {
                                 paymentId: response.razorpay_payment_id
                             })
                         })
+                        const data = await saveOrderRes.json();
+                        console.log(data);
                         if (saveOrderRes.ok) {
                             dispatch(clearCart())
                             navigate("/ordersuccess")
                         } else {
-                            alert("Order saving failed")
+                            alert(data.message || "Order saving failed");
                         }
                     } else {
                         alert("Payment verification failed")
@@ -76,7 +78,7 @@ export const Checkout = () => {
                 prefill: {
                     name: address.fullName,
                     email: user?.email,
-                    Contact: '8567923478'
+                    contact: '8567923478'
                 },
                 theme: {
                     color: '#f97316'
@@ -91,7 +93,7 @@ export const Checkout = () => {
     }
 
     const bypassPayment = async () => {
-        const saveOrderRes = await fetch("http://localhost:4000/api/payment/order", {
+        const saveOrderRes = await fetch("http://localhost:4000/api/orders", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -110,11 +112,15 @@ export const Checkout = () => {
         }
     }
 
-    const handleSubmit = (e)=>{
+    const handleSubmit = (e) => {
         e.preventDefault();
-        if(!user){
+        if (!user) {
             alert("please login first")
             navigate("/login")
+            return;
+        }
+        if (cartItems.length === 0) {
+            alert("Cart is empty");
             return;
         }
         handlePayment()
@@ -126,14 +132,14 @@ export const Checkout = () => {
             <div className="checkout-content">
                 <form onSubmit={handleSubmit} className="shipping-form">
                     <h3>Shipping Address</h3>
-                    <input type="text" placeholder="full name" required value={address.fullName} onChange={(e)=>setAddress({...address,fullName:e.target.value})} />
-                    <input type="text" placeholder="street name" required value={address.street} onChange={(e)=>setAddress({...address,street:e.target.value})} />
-                    <input type="text" placeholder="city name" required value={address.city} onChange={(e)=>setAddress({...address,city:e.target.value})} />
-                    <input type="text" placeholder="postal code" required value={address.postalCode} onChange={(e)=>setAddress({...address,postalCode:e.target.value})} />
-                    <input type="text" placeholder="country" required value={address.country} onChange={(e)=>setAddress({...address,country:e.target.value})} />
+                    <input type="text" placeholder="full name" required value={address.fullName} onChange={(e) => setAddress({ ...address, fullName: e.target.value })} />
+                    <input type="text" placeholder="street name" required value={address.street} onChange={(e) => setAddress({ ...address, street: e.target.value })} />
+                    <input type="text" placeholder="city name" required value={address.city} onChange={(e) => setAddress({ ...address, city: e.target.value })} />
+                    <input type="text" placeholder="postal code" required value={address.postalCode} onChange={(e) => setAddress({ ...address, postalCode: e.target.value })} />
+                    <input type="text" placeholder="country" required value={address.country} onChange={(e) => setAddress({ ...address, country: e.target.value })} />
 
                     <div className="checkout-summary">
-                        <h4>Toatl to Pay : {totalPrice.toFixed(2)}</h4>
+                        <h4>Total to Pay : {totalPrice.toFixed(2)}</h4>
                         <button type="submit" className="btn">Pay Now</button>
                     </div>
                 </form>
