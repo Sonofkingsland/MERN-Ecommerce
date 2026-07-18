@@ -1,14 +1,19 @@
 import cloudinary from "../config/cloudinary.js";
 import ProductModel from "../model/products.js"
 
-export const getProducts = async (req, resp) => {
+
+export const getProducts = async (req, res) => {
     try {
-        const products = await ProductModel.find({});
-        resp.json(products)
+        const search = req.query.search || "";
+
+        const products = await ProductModel.find({name: {$regex: search,$options: "i" }});
+
+        res.status(200).json(products);
     } catch (error) {
-        resp.status(500).json({ message: "server error" })
+        res.status(500).json({ message: error.message });
     }
-}
+};
+
 
 export const getProductById = async (req, resp) => {
     try {
@@ -116,3 +121,4 @@ export const deleteProduct = async(req,resp)=>{
         resp.status(500).json({message:"server error"})
     }
 }
+
