@@ -27,7 +27,7 @@
 .hero-banner p {
     max-width: 700px;
     margin: auto;
-    color: #2c2a2a;
+    color: #ffffff;
     font-size: 1.1rem;
     line-height: 1.8;
     opacity: 0.95;
@@ -37,7 +37,7 @@
 .home-container h2 {
     font-size: 2rem;
     margin-bottom: 25px;
-    color: #2c2a2a;
+    color: #252121;
     font-weight: 700;
     text-align: center;
 }
@@ -104,3 +104,4 @@
 .hero-btn:hover {
     transform: translateY(-4px);
 }
+
