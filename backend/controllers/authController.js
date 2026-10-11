@@ -30,8 +30,9 @@ export const registerUser = async (req, resp) => {
             const otp = Math.floor(100000 + Math.random() * 900000).toString();
 
             const message = `
-            Welcome to YourShop, ${name}! Thank you for registering with us.
-                your OTP for YourShop registration is : ${otp}
+            Welcome to YourShop, ${name}! 
+            Thank you for registering with us.
+            your OTP for YourShop registration is : ${otp}
             `;
 
             await sendEmail(email, 'Welcome to YourShop - Your OTP for Registraion', message)
